@@ -3,7 +3,7 @@ import 'package:employee_management_app/Provider/Authentication%20Provider/authP
 import 'package:employee_management_app/Screens/Home.dart';
 import 'package:employee_management_app/Screens/HomeScreen.dart';
 import 'package:employee_management_app/Utills/Global%20Class/ColorHelper.dart';
-import 'package:employee_management_app/Screens/Attendance%20Screen/Screen/Widgets/AttendanceShimmerScreen.dart';
+import 'package:employee_management_app/Screens/Attendance%20Screen/Widgets/AttendanceShimmerScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';

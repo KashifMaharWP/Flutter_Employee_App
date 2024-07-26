@@ -1,5 +1,6 @@
 import 'dart:async';
 //import 'package:employee_management_app/Model/AttendanceCheckInModel.dart';
+import 'package:employee_management_app/Screens/Attendance%20Screen/Class/CheckInClass.dart';
 import 'package:employee_management_app/Utills/AttendanceDataList.dart';
 import 'package:employee_management_app/Utills/Global%20Class/ColorHelper.dart';
 import 'package:employee_management_app/Widgets/Local%20Widgets/AttendanceCard.dart';
@@ -12,9 +13,10 @@ import 'package:slide_to_act/slide_to_act.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../../../Utills/Global Class/ScreenSize.dart';
-import 'Functions/Location_Tracker.dart';
+import '../Functions/Location_Tracker.dart';
 import '../../../Provider/Attendance Provider/attendanceProvider.dart';
-import 'Widgets/SimpleCard.dart';
+import '../Widgets/SimpleCard.dart';
+
 
 class AttendanceScreen extends StatefulWidget {
   const AttendanceScreen({super.key});
@@ -26,7 +28,7 @@ class AttendanceScreen extends StatefulWidget {
 class _AttendanceScreenState extends State<AttendanceScreen> {
   @override
 
-  String checkIn=CheckInData.location;
+  String checkIn='--|--';
   String checkOut='--|--';
   Timer? _midnightTimer;
   Timer? _autoCheckoutTimer;
@@ -34,23 +36,6 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   double progressvalue=20;
 
   @override
-  void initState() {
-    super.initState();
-    _startMidnightTimer();
-  }
-
-  void _startMidnightTimer() {
-    _midnightTimer = Timer.periodic(Duration(minutes: 1), (timer) {
-      DateTime now = DateTime.now();
-      if (now.hour == 0 && now.minute == 0) {
-        setState(() {
-          checkIn = '--|--';
-          checkOut = '--|--';
-
-        });
-      }
-    });
-  }
 
   /*void _startAutoCheckoutTimer() {
     _autoCheckoutTimer?.cancel();
@@ -83,13 +68,8 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    initState(){
-      setState(() {
-
-      });
-    }
     final atdProvider = Provider.of<AttendanceProvider>(context);
-
+    print("object");
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20),
@@ -137,7 +117,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                           fontSize: screenWidth/25
                         )
                       ),),
-                      Text("$checkIn",
+                      Text(CheckInClass.checkInTime,
                         style: GoogleFonts.roboto(
                             textStyle: TextStyle(
                                 color: lightBlackColor,
@@ -229,42 +209,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                            );
                          }),
                    ],
-                                 ),
-                ),
-                atdProvider.ischeckedIn?
-                Container() :Expanded(
-                  child: StreamBuilder<int>(
-                    stream: _countdownController?.stream,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        final remainingSeconds = snapshot.data!;
-                        final hours = remainingSeconds ~/ 3600;
-                        final minutes = (remainingSeconds % 3600) ~/ 60;
-                        final seconds = remainingSeconds % 60;
-                        return Text(
-                          'Remaining Time: ${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
-                          style: GoogleFonts.roboto(
-                            textStyle: TextStyle(
-                              fontSize: screenWidth / 18,
-                              fontWeight: FontWeight.w500,
-                              color: lightBlackColor,
-                            ),
-                          ),
-                        );
-                      } else {
-                        return Text(
-                          'Remaining Time: 08:00:00',
-                          style: GoogleFonts.roboto(
-                            textStyle: TextStyle(
-                              fontSize: screenWidth / 18,
-                              fontWeight: FontWeight.w500,
-                              color: lightBlackColor,
-                            ),
-                          ),
-                        );
-                      }
-                    },
-                  ),
+                   ),
                 ),
               ],
             ),
@@ -274,37 +219,39 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               margin: EdgeInsets.only(top: screenWidth/15),
               child: Builder(builder: (context){
                 final GlobalKey<SlideActionState> key= GlobalKey();
-                return SlideAction(
-                  text: atdProvider.ischeckedIn?"Slide to Check Out":"Slide to Check In",
-                  textStyle: GoogleFonts.roboto(
-                    textStyle: TextStyle(
-                      color: lightBlackColor,
-                      fontSize: screenWidth/20,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  outerColor: Colors.white,
-                  innerColor: atdProvider.ischeckedIn?darkgreyColor:primary,
-                  elevation: 10,
+                return  SlideAction(
+                      text: atdProvider.ischeckedIn==false?"Slide to Check Out":"Slide to Check In",
+                      textStyle: GoogleFonts.roboto(
+                        textStyle: TextStyle(
+                            color: lightBlackColor,
+                            fontSize: screenWidth/20,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                      outerColor: Colors.white,
+                      innerColor: atdProvider.ischeckedIn==false?lightBlackColor:primary,
+                      elevation: 10,
 
-                  key: key,
-                  onSubmit: (){
-                    key.currentState!.reset();
-                    if(atdProvider.ischeckedIn==false){
-                      /*checkIn = DateFormat('hh:mm').format(DateTime.now());
+                      key: key,
+                      onSubmit: (){
+                        key.currentState!.reset();
+                        setState(() {
+                          if(atdProvider.ischeckedIn==false){
+                            /*checkIn = DateFormat('hh:mm').format(DateTime.now());
                       print("isChecked False");
                       print("$checkIn");
                       //_startAutoCheckoutTimer();
                       //getCurrentLocation();*/
-                      getCurrentLocationCheckInTime(context);
-                    }
-                    else{
-                      getCurrentLocationCheckOutTime(context);
+                            getCurrentLocationCheckInTime(context);
+                          }
+                          else{
+                            getCurrentLocationCheckOutTime(context);
+                          }
+                        });
 
-                    }
 
-                  }
-                );
+                      }
+                  );
               }),
             ),
             SizedBox(
@@ -315,7 +262,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               alignment: Alignment.centerLeft,
               child: Text("${DateFormat(' MMMM').format(DateTime.now())} Status",style: GoogleFonts.roboto(
                   textStyle:TextStyle(
-                    color: whiteColor,
+                    color: blackColor,
                     fontWeight: FontWeight.bold,
                     fontSize:screenWidth/15,
                   )
@@ -331,9 +278,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 SimpleCustomCard(
                     label: "Early Leave",
                     progressValue: 8,
-                    fontPrimaryColor: lightBlackColor,
-                    fontSecondaryColor: whiteColor,
-                    color: primary,
+                    color: blackColor,
+                    headingColor: primary,
+                    backgroundColor: whiteColor,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
                   totalhrs: '',
@@ -342,9 +289,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 SimpleCustomCard(
                     label: "On Time",
                     progressValue: 20,
-                    fontPrimaryColor: lightBlackColor,
-                    fontSecondaryColor: whiteColor,
-                    color: primary,
+                    color: blackColor,
+                    headingColor: primary,
+                    backgroundColor: whiteColor,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
                   totalhrs: '',
@@ -363,9 +310,9 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 SimpleCustomCard(
                     label: "Absent",
                     progressValue: 2,
-                    fontPrimaryColor: lightBlackColor,
-                    fontSecondaryColor: whiteColor,
-                    color: primary,
+                    backgroundColor: whiteColor,
+                    color: blackColor,
+                     headingColor: primary,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
                   totalhrs: '',
@@ -374,14 +321,15 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 SimpleCustomCard(
                     label: "TotalPresent",
                     progressValue: 28,
-                    fontPrimaryColor: lightBlackColor,
-                    fontSecondaryColor: whiteColor,
-                    color: primary,
+                    backgroundColor: whiteColor,
+                    color: blackColor,
+                    headingColor: primary,
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
                     totalhrs: '',
                   slash: '',
                 ),
+
               ],
             ),
 

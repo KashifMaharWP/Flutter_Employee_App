@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:employee_management_app/Utills/Global%20Class/ColorHelper.dart';
 import 'package:employee_management_app/Utills/Global%20Class/userDataList.dart';
 import 'package:employee_management_app/Widgets/Local%20Widgets/HomeCardWidget.dart';
-import 'package:employee_management_app/Screens/Attendance%20Screen/Screen/Widgets/SimpleCard.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -126,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: screenHeight/25,
                   ),
-                  Row(
+                 /* Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SimpleCustomCard(
@@ -188,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         slash: '/',
                       ),
                     ],
-                  ),
+                  ),*/
                 ],
               ),
             )

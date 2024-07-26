@@ -1,3 +1,4 @@
+import 'package:employee_management_app/Utills/Global%20Class/ColorHelper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,9 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 class SimpleCustomCard extends StatelessWidget {
   final String label;
   final int progressValue;
-  final Color fontPrimaryColor;
-  final Color fontSecondaryColor;
   final Color color;
+  final Color headingColor;
+  final Color backgroundColor;
   final double screenWidth;
   final double screenHeight;
   final String totalhrs;
@@ -16,9 +17,9 @@ class SimpleCustomCard extends StatelessWidget {
   SimpleCustomCard({
     required this.label,
     required this.progressValue,
-    required this.fontPrimaryColor,
-    required this.fontSecondaryColor,
     required this.color,
+    required this.headingColor,
+    required this.backgroundColor,
     required this.screenWidth,
     required this.screenHeight,
     required this.totalhrs,
@@ -31,24 +32,15 @@ class SimpleCustomCard extends StatelessWidget {
       height: screenHeight/8,
       width: screenWidth/2.4,
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [fontSecondaryColor,Colors.white]
-          ),
+          color: backgroundColor,
           boxShadow: [
             BoxShadow(
-                blurRadius: 10,
-                offset: Offset(2,4),
-              color: Colors.black12
+              spreadRadius: 0.1,
+                blurRadius: 5,
+                offset: Offset(2,2),
+              color: lightBlackColor
             )
           ],
-          border:Border(top:BorderSide(
-              color: color,
-              width: 10,
-              style: BorderStyle.solid
-          )),
-          borderRadius: BorderRadius.circular(2)
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,7 +49,7 @@ class SimpleCustomCard extends StatelessWidget {
           Text("${progressValue}${slash}${totalhrs}",
             style: GoogleFonts.roboto(
                 textStyle: TextStyle(
-                    color: color,
+                    color: headingColor,
                     fontWeight: FontWeight.bold,
                     fontSize: screenWidth/15
                 )

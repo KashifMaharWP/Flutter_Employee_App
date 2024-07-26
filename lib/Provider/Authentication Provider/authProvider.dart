@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:employee_management_app/Screens/Home.dart';
 import 'package:employee_management_app/Utills/Global%20Class/userDataList.dart';
+import 'package:employee_management_app/Utills/Global%20Functions/SnackBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -69,9 +70,14 @@ class AuthProvider extends ChangeNotifier{
 
       }
      }
+     else if(response.statusCode==401){
+       print("Wrong User Crdential");
+       showErrorSnackbar("Wrong User Crdential", context);
+     }
      else{
-       print("Incorrect User Details");
+       print("Server is Not Responsing");
        setLoading(false);
+       showErrorSnackbar("Server is Not Responsing", context);
 
      }
 
