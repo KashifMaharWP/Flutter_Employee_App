@@ -220,7 +220,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               child: Builder(builder: (context){
                 final GlobalKey<SlideActionState> key= GlobalKey();
                 return  SlideAction(
-                      text: atdProvider.ischeckedIn==false?"Slide to Check Out":"Slide to Check In",
+                      text: atdProvider.ischeckedIn==true?"Slide to Check Out":"Slide to Check In",
                       textStyle: GoogleFonts.roboto(
                         textStyle: TextStyle(
                             color: lightBlackColor,
@@ -229,28 +229,20 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                         ),
                       ),
                       outerColor: Colors.white,
-                      innerColor: atdProvider.ischeckedIn==false?lightBlackColor:primary,
+                      innerColor: atdProvider.ischeckedIn==true?lightBlackColor:primary,
                       elevation: 10,
 
                       key: key,
                       onSubmit: (){
                         key.currentState!.reset();
-                        setState(() {
-                          if(atdProvider.ischeckedIn==false){
-                            /*checkIn = DateFormat('hh:mm').format(DateTime.now());
-                      print("isChecked False");
-                      print("$checkIn");
-                      //_startAutoCheckoutTimer();
-                      //getCurrentLocation();*/
+                        if(atdProvider.ischeckedIn==true){
+                          getCurrentLocationCheckOutTime(context);
+                        }
+                        else
+                          {
                             getCurrentLocationCheckInTime(context);
                           }
-                          else{
-                            getCurrentLocationCheckOutTime(context);
                           }
-                        });
-
-
-                      }
                   );
               }),
             ),

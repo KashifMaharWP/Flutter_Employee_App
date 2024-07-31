@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    startMidnightTimer();
     screenWidth=MediaQuery.of(context).size.width;
     screenHeight=MediaQuery.of(context).size.height;
     return MultiProvider(

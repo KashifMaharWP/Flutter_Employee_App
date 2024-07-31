@@ -24,7 +24,6 @@ class AuthProvider extends ChangeNotifier{
 
 
  void login(String email,password,BuildContext context,) async{
-
     setLoading(true);
    String url='${ApiDetail.BaseAPI}${ApiDetail.loginAPI}';
    print(url);
