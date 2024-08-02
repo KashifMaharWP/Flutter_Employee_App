@@ -1,3 +1,4 @@
+import 'package:employee_management_app/Screens/Leave%20Screen/LeaveScreen.dart';
 import 'package:employee_management_app/Utills/Global%20Class/ColorHelper.dart';
 import 'package:employee_management_app/Utills/Global%20Class/ScreenSize.dart';
 import 'package:flutter/cupertino.dart';
@@ -80,12 +81,17 @@ class LeaveHistoryScreen extends StatelessWidget {
                 Positioned(
                   top: screenHeight/6,
                   left: screenWidth*0.84,
-                  child: CircleAvatar(
-                    backgroundColor: lightBlackColor,
-                    radius: screenWidth/15,
-                    child: Icon(
-                      FontAwesomeIcons.plus,
-                    color: whiteColor,
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaveScreen()));
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: lightBlackColor,
+                      radius: screenWidth/15,
+                      child: Icon(
+                        FontAwesomeIcons.plus,
+                      color: whiteColor,
+                      ),
                     ),
                   ),
                 )

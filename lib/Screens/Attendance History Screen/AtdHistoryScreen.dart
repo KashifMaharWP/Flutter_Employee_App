@@ -1,3 +1,4 @@
+import 'package:employee_management_app/Provider/AtendanceHistoryProvider/HistoryProvider.dart';
 import 'package:employee_management_app/Screens/HomeScreen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -5,9 +6,11 @@ import 'package:flutter_custom_month_picker/flutter_custom_month_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
+import '../../Provider/AtendanceHistoryProvider/HistoryProvider.dart';
 import '../../Utills/Global Class/ColorHelper.dart';
 import '../../Utills/Global Class/ScreenSize.dart';
 
@@ -32,7 +35,7 @@ class _AtdHistoryScreenState extends State<AtdHistoryScreen> {
 
     });
  }
-  void NextMonth(){
+  void NextMonth(BuildContext context){
     setState(() {
       DateTime now = DateTime.now();
       if (_currentMonth.year == now.year && _currentMonth.month == now.month) {
@@ -124,7 +127,7 @@ class _AtdHistoryScreenState extends State<AtdHistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    final AtdHistProvider=Provider.of<HistoryProvider>(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10),
@@ -208,7 +211,9 @@ class _AtdHistoryScreenState extends State<AtdHistoryScreen> {
                   alignment: Alignment.centerRight,
                   child: InkWell(
                     onTap: (){
-                      NextMonth();
+                      NextMonth(context);
+                      AtdHistProvider.GetMonthData(_currentMonth.toString(), context);
+
                     },
                       child: isCurrentMonth?Container():Icon(
                         FontAwesomeIcons.chevronRight,color: primary,size: screenWidth/15,)

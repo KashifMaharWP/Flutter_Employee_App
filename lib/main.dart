@@ -13,12 +13,13 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import 'Provider/AtendanceHistoryProvider/HistoryProvider.dart';
+import 'Screens/Attendance Screen/Functions/midNightTimer.dart';
 import 'Utills/Global Class/ScreenSize.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 void main() {
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context)=>AuthProvider(),),
         ChangeNotifierProvider(create: (context)=>AttendanceProvider(),),
+        ChangeNotifierProvider(create: (context)=>HistoryProvider())
       ],
 
       child: MaterialApp(

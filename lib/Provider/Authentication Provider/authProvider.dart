@@ -83,6 +83,7 @@ class AuthProvider extends ChangeNotifier{
     }
     catch(e){
       print(e);
+      showErrorSnackbar("There is Error is occured during Connection: ${e}", context);
       setLoading(false);
 
     }

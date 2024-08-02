@@ -6,6 +6,7 @@ import 'package:employee_management_app/Utills/Global%20Class/ColorHelper.dart';
 import 'package:employee_management_app/Widgets/Local%20Widgets/AttendanceCard.dart';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,7 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 import '../../../Utills/Global Class/ScreenSize.dart';
 import '../Functions/Location_Tracker.dart';
 import '../../../Provider/Attendance Provider/attendanceProvider.dart';
+import '../Functions/midNightTimer.dart';
 import '../Widgets/SimpleCard.dart';
 
 
@@ -69,7 +71,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   @override
   Widget build(BuildContext context) {
     final atdProvider = Provider.of<AttendanceProvider>(context);
-    print("object");
+    atdProvider.CheckMidNight();
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20),
@@ -140,7 +142,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                                     fontSize: screenWidth/25
                                 )
                             ),),
-                          Text("$checkOut",
+                          Text(CheckInClass.checkOutTime,
                             style: GoogleFonts.roboto(
                                 textStyle: TextStyle(
                                     color:lightBlackColor,
@@ -220,6 +222,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               child: Builder(builder: (context){
                 final GlobalKey<SlideActionState> key= GlobalKey();
                 return  SlideAction(
+                  submittedIcon: Icon(FontAwesomeIcons.check),
                       text: atdProvider.ischeckedIn==true?"Slide to Check Out":"Slide to Check In",
                       textStyle: GoogleFonts.roboto(
                         textStyle: TextStyle(

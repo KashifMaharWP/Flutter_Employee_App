@@ -1,6 +1,7 @@
 
 class CheckInClass{
 static String checkInTime='--|--';
-static DateTime? checkInDate;
+static String checkOutTime='--|--';
+static String checkInDate='--|--';
 }
 

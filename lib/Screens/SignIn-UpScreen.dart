@@ -156,13 +156,13 @@ class _SignInUpState extends State<SignInUp> {
                             ),
                             elevation: 20,
                           ),
-                          child: Text("Sign In",
+                          child: authProvider.loading?Text("Sign In",
                             style: GoogleFonts.roboto(
                                   color: whiteColor,
                                   fontSize: screenWidth/18,
                                   fontWeight: FontWeight.bold
                           )
-                          ,)
+                          ,):CircularProgressIndicator(color: primary,)
                       )
                     ),
 

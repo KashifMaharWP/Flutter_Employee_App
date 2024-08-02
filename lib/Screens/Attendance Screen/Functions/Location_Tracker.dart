@@ -22,7 +22,7 @@ import 'package:provider/provider.dart';
       Position currentPosition = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.best);
       final atdProvider = Provider.of<AttendanceProvider>(context, listen: false);
-      await atdProvider.AddCheckIn(currentPosition.latitude, currentPosition.longitude);
+      await atdProvider.AddCheckIn(currentPosition.latitude, currentPosition.longitude,context);
     }
   }
 
@@ -38,6 +38,6 @@ import 'package:provider/provider.dart';
       Position currentPosition = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.best);
       final atdProvider = Provider.of<AttendanceProvider>(context, listen: false);
-      atdProvider.AddCheckOut(currentPosition.latitude, currentPosition.longitude);
+      atdProvider.AddCheckOut(currentPosition.latitude, currentPosition.longitude,context);
     }
   }

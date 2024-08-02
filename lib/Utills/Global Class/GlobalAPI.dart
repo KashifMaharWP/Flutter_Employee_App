@@ -4,7 +4,7 @@ class ApiDetail{
   static String SignUpAPI="user/create";
   static String CheckIn="attendance/checkIn";
   static String CheckOut="attendance/checkOut";
-
+  static String AtdHistory="attendance/getMyMonthAttendance/";
 }
 
 class addressDetail{

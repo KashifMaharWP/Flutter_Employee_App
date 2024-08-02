@@ -16,19 +16,31 @@ class AttendanceSharedPrefrences {
 
     pref.setString("CheckInTime", Time);
     pref.setString("CheckInDate", Datestamp);
-    print("SharedPreference Data Inserted");
     Get_checkInSharePreference();
+    print("SharedPreference Data Inserted");
+  }
 
+  static Future <void> Set_checkOutSharePreference() async{
+    String Time=DateFormat("hh:mm:a").format(DateTime.now());
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    pref.setString("CheckOutTime", Time);
+    Get_checkOutSharePreference();
+    print("Checkout Data SharedPreference Data Inserted");
   }
 
   static Future <void> Get_checkInSharePreference() async{
     SharedPreferences pref = await SharedPreferences.getInstance();
-    //CheckInDate = pref.getString("CheckInDate").toString();
-    //CheckInTime=pref.getString("CheckInTime").toString();
-
+    CheckInClass.checkInDate = pref.getString("CheckInDate").toString();
+    CheckInClass.checkInTime=pref.getString("CheckInTime").toString();
+    CheckInClass.checkOutTime=pref.getString("CheckOutTime").toString();
     print("Data Getted from Shared Preferences");
-    print("Check Time : ${pref.getString("CheckInTime").toString()} ");
-    print("Check Date : ${pref.getString("CheckInDate").toString()} ");
+    }
+
+  static Future <void> Get_checkOutSharePreference() async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    CheckInClass.checkOutTime=pref.getString("CheckOutTime").toString();
+    print("Data Getted from Shared Preferences");
   }
 
 }
