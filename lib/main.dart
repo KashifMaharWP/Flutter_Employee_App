@@ -8,6 +8,7 @@ import 'package:employee_management_app/Screens/SignIn-UpScreen.dart';
 import 'package:employee_management_app/Utills/Global%20Class/myRoutes.dart';
 import 'package:employee_management_app/Screens/Attendance%20Screen/Widgets/AttendanceShimmerScreen.dart';
 import 'package:employee_management_app/Utills/Global%20Functions/MidNightTimer.dart';
+import 'package:employee_management_app/Widgets/AttendanceHistoryShimmer/AttendanceHistoryShimmerScreen.dart';
 
 import 'package:flutter/material.dart';
 

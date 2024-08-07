@@ -5,6 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+
+import '../Attendance Screen/Widgets/SimpleCard.dart';
 
 class LeaveHistoryScreen extends StatelessWidget {
   const LeaveHistoryScreen({super.key});
@@ -85,18 +88,113 @@ class LeaveHistoryScreen extends StatelessWidget {
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaveScreen()));
                     },
-                    child: CircleAvatar(
-                      backgroundColor: lightBlackColor,
-                      radius: screenWidth/15,
-                      child: Icon(
-                        FontAwesomeIcons.plus,
-                      color: whiteColor,
+                    child: InkWell(
+                      onTap: (){
+                       showDialog(context: context, builder: (ctx)=>AlertDialog(
+                         actions: [
+
+                         ],
+                       ));
+                        },
+                      child: CircleAvatar(
+                        backgroundColor: lightBlackColor,
+                        radius: screenWidth/15,
+                        child: Icon(
+                          FontAwesomeIcons.plus,
+                        color: whiteColor,
+                        ),
                       ),
                     ),
                   ),
                 )
               ],
-            )
+            ),
+
+          SizedBox(
+            height: screenHeight/20,
+          ),
+
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: screenWidth/20),
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text("${DateFormat(' MMMM').format(DateTime.now())} Status",style: GoogleFonts.roboto(
+                      textStyle:TextStyle(
+                        color: blackColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize:screenWidth/15,
+                      )
+                  ),),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SimpleCustomCard(
+                      label: "Early Leave",
+                      progressValue: 8,
+                      color: blackColor,
+                      headingColor: primary,
+                      backgroundColor: whiteColor,
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                      totalhrs: '',
+                      slash: '',
+                    ),
+                    SimpleCustomCard(
+                      label: "On Time",
+                      progressValue: 20,
+                      color: blackColor,
+                      headingColor: primary,
+                      backgroundColor: whiteColor,
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                      totalhrs: '',
+                      slash: '',
+                    ),
+                  ],
+                ),
+
+                SizedBox(
+                  height: screenHeight/35,
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SimpleCustomCard(
+                      label: "Absent",
+                      progressValue: 2,
+                      backgroundColor: whiteColor,
+                      color: blackColor,
+                      headingColor: primary,
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                      totalhrs: '',
+                      slash: '',
+                    ),
+                    SimpleCustomCard(
+                      label: "TotalPresent",
+                      progressValue: 28,
+                      backgroundColor: whiteColor,
+                      color: blackColor,
+                      headingColor: primary,
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                      totalhrs: '',
+                      slash: '',
+                    ),
+
+                  ],
+                ),
+              ],
+            ),
+          )
 
 
           

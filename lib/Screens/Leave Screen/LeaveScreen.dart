@@ -20,7 +20,7 @@ DateTime? lastDate;
 int countdays=0;
 DateRangePickerController _dateRangePickerController = DateRangePickerController();
 final Remark = TextEditingController();
-final _formKey=GlobalKey<FormState>();
+final _LeaveformKey=GlobalKey<FormState>();
 String? selectedTeamLead;
 
 
@@ -247,7 +247,7 @@ class _LeaveScreenState extends State<LeaveScreen> {
             Container(
               padding: EdgeInsets.all(20),
               child: Form(
-                key: _formKey,
+                key: _LeaveformKey,
                 child: Column(
                   children: [
                     DropdownButtonFormField<String>(
@@ -310,7 +310,7 @@ class _LeaveScreenState extends State<LeaveScreen> {
 
                     ElevatedButton(
                         onPressed: (){
-                          if(_formKey.currentState!.validate()){
+                          if(_LeaveformKey.currentState!.validate()){
                             if(initialDate==null || lastDate==null){
                               showErrorSnackbar("Please Select Leave Date", context);
                             }

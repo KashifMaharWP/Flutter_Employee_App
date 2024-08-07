@@ -25,7 +25,7 @@ class _SignInUpState extends State<SignInUp> {
    final email = TextEditingController();
    final password = TextEditingController();
    final EID = TextEditingController();
-   final _formKey=GlobalKey<FormState>();
+   final _SignInformKey=GlobalKey<FormState>();
 
    @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class _SignInUpState extends State<SignInUp> {
                 ]
               ),
               child: Form(
-                key: _formKey,
+                key: _SignInformKey,
                 child: Column(
                   children: [
                     TextFormField(
@@ -139,7 +139,7 @@ class _SignInUpState extends State<SignInUp> {
                       height: 50,
                       child:
                         ElevatedButton(onPressed: (){
-                        if(_formKey.currentState!.validate()) {
+                        if(_SignInformKey.currentState!.validate()) {
 
                           print("Clicked");
                             authProvider.login(
