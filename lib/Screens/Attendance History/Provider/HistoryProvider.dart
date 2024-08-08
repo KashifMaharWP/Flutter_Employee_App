@@ -7,8 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
-import '../../Model/AttendanceHistoryModel.dart';
-import '../../Utills/Global Class/userDataList.dart';
+import '../../../Model/AttendanceHistoryModel.dart';
+import '../../../Utills/Global Class/userDataList.dart';
 
 class HistoryProvider extends ChangeNotifier{
   List<Attendance> _attendanceList = [];
@@ -47,7 +47,7 @@ class HistoryProvider extends ChangeNotifier{
   }*/
 
 
-Future<AttendanceHistoryModel> GetAttendanceData(String month) async {
+Future<AttendanceHistoryModel> GetAttendanceData(String month,BuildContext context) async {
   String URL="${ApiDetail.BaseAPI}${ApiDetail.AtdHistory}${month}";
   try{
     Response response=await http.get(Uri.parse(URL),
@@ -67,6 +67,7 @@ Future<AttendanceHistoryModel> GetAttendanceData(String month) async {
   }
   }catch(e){
     print(e);
+    showErrorSnackbar("There is error Occured during connection : ${e}", context);
   }
   return AttendanceHistoryModel();
 }

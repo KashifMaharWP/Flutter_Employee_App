@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../Utills/Global Class/ColorHelper.dart';
-import '../../../Utills/Global Class/ScreenSize.dart';
+import '../../Utills/Global Class/ColorHelper.dart';
+import '../../Utills/Global Class/ScreenSize.dart';
 
 class containerShimmer extends StatelessWidget {
   final double widthSize;

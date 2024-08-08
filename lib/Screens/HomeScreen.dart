@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import '../Provider/Attendance Provider/attendanceProvider.dart';
+import 'Attendance Screen/Provider/attendanceProvider.dart';
 import '../Provider/Authentication Provider/authProvider.dart';
 import '../Utills/Global Class/ScreenSize.dart';
 import '../Widgets/Local Widgets/AttendanceCard.dart';

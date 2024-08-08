@@ -1,9 +1,11 @@
+import 'package:employee_management_app/Screens/Leave%20Screen/Provider/LeaverProvider.dart';
 import 'package:employee_management_app/Utills/Global%20Class/ColorHelper.dart';
 import 'package:employee_management_app/Utills/Global%20Functions/SnackBar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../Utills/Global Class/ScreenSize.dart';
@@ -22,6 +24,7 @@ DateRangePickerController _dateRangePickerController = DateRangePickerController
 final Remark = TextEditingController();
 final _LeaveformKey=GlobalKey<FormState>();
 String? selectedTeamLead;
+String? _selectedTeamLead;
 
 
 @override
@@ -58,12 +61,13 @@ class _LeaveScreenState extends State<LeaveScreen> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     int countdays=_calculateDaysBetween(initialDate,lastDate);
 
     List<String> teamLeads = ['Arshad', 'Fida', 'Naem', 'Sahib'];
-
+    //Provider.of<TeamLeadListProvider>(context).GetTeamLeadLsit(context);
 
     return SingleChildScrollView(
       physics: ScrollPhysics(),
@@ -281,6 +285,7 @@ class _LeaveScreenState extends State<LeaveScreen> {
                         border: OutlineInputBorder(),
                       ),
                     ),
+
 
                     SizedBox(
                       height: screenHeight/50,

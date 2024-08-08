@@ -15,7 +15,7 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../../../Utills/Global Class/ScreenSize.dart';
 import '../Functions/Location_Tracker.dart';
-import '../../../Provider/Attendance Provider/attendanceProvider.dart';
+import '../Provider/attendanceProvider.dart';
 import '../Functions/midNightTimer.dart';
 import '../Widgets/SimpleCard.dart';
 
@@ -72,6 +72,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Widget build(BuildContext context) {
     final atdProvider = Provider.of<AttendanceProvider>(context);
     atdProvider.CheckMidNight();
+
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20),

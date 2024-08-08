@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:employee_management_app/Model/UserModel.dart';
-import 'package:employee_management_app/Provider/Attendance%20Provider/attendanceProvider.dart';
+import 'package:employee_management_app/Screens/Attendance%20Screen/Provider/attendanceProvider.dart';
 import 'package:employee_management_app/Utills/Global%20Class/GlobalAPI.dart';
 import 'package:employee_management_app/main.dart';
 import 'package:flutter/cupertino.dart';

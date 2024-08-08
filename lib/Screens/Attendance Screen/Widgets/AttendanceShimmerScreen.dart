@@ -1,10 +1,10 @@
 import 'package:employee_management_app/Utills/Global%20Class/ColorHelper.dart';
 import 'package:employee_management_app/Utills/Global%20Class/ScreenSize.dart';
-import 'package:employee_management_app/Widgets/Global%20Widgets/Shimmer%20Widget/ContainerShimmer.dart';
-import 'package:employee_management_app/Widgets/Global%20Widgets/Shimmer%20Widget/ContainerShimmer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+
+import '../../../Widgets/Shimmer Widget/ContainerShimmer.dart';
 
 class AttendanceShimmer extends StatelessWidget {
   const AttendanceShimmer({super.key});

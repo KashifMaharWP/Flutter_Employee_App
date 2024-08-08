@@ -1,4 +1,4 @@
-import 'package:employee_management_app/Provider/Attendance%20Provider/attendanceProvider.dart';
+import 'package:employee_management_app/Screens/Attendance%20Screen/Provider/attendanceProvider.dart';
 import 'package:employee_management_app/Provider/Authentication%20Provider/authProvider.dart';
 import 'package:employee_management_app/Screens/Attendance%20Screen/Screen/Attedance_screen.dart';
 import 'package:employee_management_app/Screens/Attendance%20Screen/Functions/Location_Tracker.dart';
@@ -8,14 +8,14 @@ import 'package:employee_management_app/Screens/SignIn-UpScreen.dart';
 import 'package:employee_management_app/Utills/Global%20Class/myRoutes.dart';
 import 'package:employee_management_app/Screens/Attendance%20Screen/Widgets/AttendanceShimmerScreen.dart';
 import 'package:employee_management_app/Utills/Global%20Functions/MidNightTimer.dart';
-import 'package:employee_management_app/Widgets/AttendanceHistoryShimmer/AttendanceHistoryShimmerScreen.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'Provider/AtendanceHistoryProvider/HistoryProvider.dart';
+import 'Screens/Attendance History/Provider/HistoryProvider.dart';
 import 'Screens/Attendance Screen/Functions/midNightTimer.dart';
+import 'Screens/Leave Screen/Provider/LeaverProvider.dart';
 import 'Utills/Global Class/ScreenSize.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context)=>AuthProvider(),),
         ChangeNotifierProvider(create: (context)=>AttendanceProvider(),),
-        ChangeNotifierProvider(create: (context)=>HistoryProvider())
+        ChangeNotifierProvider(create: (context)=>HistoryProvider()),
+        ChangeNotifierProvider(create: (context)=>TeamLeadListProvider())
       ],
 
       child: MaterialApp(

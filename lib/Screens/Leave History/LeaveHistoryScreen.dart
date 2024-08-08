@@ -88,15 +88,7 @@ class LeaveHistoryScreen extends StatelessWidget {
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaveScreen()));
                     },
-                    child: InkWell(
-                      onTap: (){
-                       showDialog(context: context, builder: (ctx)=>AlertDialog(
-                         actions: [
-
-                         ],
-                       ));
-                        },
-                      child: CircleAvatar(
+                    child: CircleAvatar(
                         backgroundColor: lightBlackColor,
                         radius: screenWidth/15,
                         child: Icon(
@@ -105,7 +97,7 @@ class LeaveHistoryScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
+
                 )
               ],
             ),

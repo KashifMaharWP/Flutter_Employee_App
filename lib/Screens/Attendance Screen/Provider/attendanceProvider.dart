@@ -7,7 +7,7 @@ import 'package:employee_management_app/Utills/Global%20Class/userDataList.dart'
 import 'package:employee_management_app/Utills/Global%20Functions/SnackBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import '../../Utills/Global Class/GlobalAPI.dart';
+import '../../../Utills/Global Class/GlobalAPI.dart';
 import 'package:http/http.dart' as http;
 
 class AttendanceProvider extends ChangeNotifier{

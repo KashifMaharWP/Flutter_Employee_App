@@ -1,8 +1,6 @@
 //import 'package:employee_management_app/Model/userModel.dart';
-import 'package:employee_management_app/Screens/Attendance%20History%20Screen/AtdHistoryScreen.dart';
 import 'package:employee_management_app/Screens/Attendance%20Screen/Screen/Attedance_screen.dart';
 import 'package:employee_management_app/Screens/HomeScreen.dart';
-import 'package:employee_management_app/Screens/LeaveHistory/LeaveHistoryScreen.dart';
 import 'package:employee_management_app/Screens/ProfileScreen.dart';
 import 'package:employee_management_app/Screens/Leave%20Screen/LeaveScreen.dart';
 import 'package:employee_management_app/Utills/Global%20Class/ColorHelper.dart';
@@ -10,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../Utills/Global Class/userDataList.dart';
+import 'Attendance History/Screen/AtdHistoryScreen.dart';
+import 'Leave History/LeaveHistoryScreen.dart';
 
 
 class homePage extends StatefulWidget {

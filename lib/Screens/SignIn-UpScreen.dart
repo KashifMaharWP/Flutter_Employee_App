@@ -30,7 +30,7 @@ class _SignInUpState extends State<SignInUp> {
    @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
-    return Scaffold(
+    return authProvider.loading?AttendanceShimmer():Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -156,13 +156,13 @@ class _SignInUpState extends State<SignInUp> {
                             ),
                             elevation: 20,
                           ),
-                          child: authProvider.loading?Text("Sign In",
+                          child: authProvider.loading?CircularProgressIndicator(color: whiteColor,):Text("Sign In",
                             style: GoogleFonts.roboto(
                                   color: whiteColor,
                                   fontSize: screenWidth/18,
                                   fontWeight: FontWeight.bold
                           )
-                          ,):CircularProgressIndicator(color: primary,)
+                          ,)
                       )
                     ),
 
