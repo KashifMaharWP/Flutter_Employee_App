@@ -86,7 +86,7 @@ class _homePageState extends State<homePage> {
                 children: [
                   InkWell(
                     onTap: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>ProfileScreen()));
+                      Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>ProfileScreen()));
                     },
                     child: CircleAvatar(
                       radius: 30,

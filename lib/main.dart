@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'Screens/Attendance History/Provider/HistoryProvider.dart';
+import 'Screens/Attendance Screen/Class/HistoryProvider.dart';
 import 'Screens/Attendance Screen/Functions/midNightTimer.dart';
 import 'Screens/Leave Screen/Provider/LeaverProvider.dart';
 import 'Utills/Global Class/ScreenSize.dart';

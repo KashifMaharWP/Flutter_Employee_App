@@ -7,7 +7,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../Utills/Global Class/ColorHelper.dart';
 import '../../../Widgets/Shimmer Widget/ContainerShimmer.dart';
-import '../Provider/HistoryProvider.dart';
+import '../../Attendance Screen/Class/HistoryProvider.dart';
 
 class AttendanceHistoryShimmer extends StatelessWidget {
   const AttendanceHistoryShimmer({super.key});
